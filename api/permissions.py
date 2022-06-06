@@ -1,12 +1,14 @@
 from rest_framework import permissions
 
+from api.models import ArticleUser
+
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return (request.method in permissions.SAFE_METHODS
-                or request.user.is_authenticated
-                and request.user.role == 'Author')
+                or (request.user.is_authenticated
+                and request.user.role == ArticleUser.AUTHOR))
 
     def has_object_permission(self, request, view, obj):
         return (request.method in permissions.SAFE_METHODS
