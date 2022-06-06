@@ -10,4 +10,4 @@ def sign_up(request):
     serializer = ArticleUserSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
-    return Response("You have registered!", status=status.HTTP_200_OK)
+    return Response(data=serializer.data, status=status.HTTP_201_CREATED)
