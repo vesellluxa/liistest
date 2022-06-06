@@ -1,16 +1,11 @@
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 from api.models import Article
 from api.permissions import IsAuthorOrReadOnly
 from api.serializers import ArticleSerializer
 
 
-class ArticleView(viewsets.mixins.DestroyModelMixin,
-                  viewsets.mixins.UpdateModelMixin,
-                  viewsets.mixins.CreateModelMixin,
-                  viewsets.mixins.RetrieveModelMixin,
-                  viewsets.mixins.ListModelMixin,
-                  viewsets.GenericViewSet):
+class ArticleView(ModelViewSet):
     serializer_class = ArticleSerializer
     permission_classes = (IsAuthorOrReadOnly,)
 
