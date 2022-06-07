@@ -7,7 +7,6 @@ class ArticleUserManager(BaseUserManager):
     def create_user(self, email, password):
         if not email:
             raise ValueError('Users must have an email address')
-
         user = self.model(
             email=self.normalize_email(email),
         )
@@ -35,7 +34,6 @@ class ArticleUser(AbstractBaseUser, PermissionsMixin):
         (AUTHOR, 'Author'),
     ]
 
-    username = models.CharField(max_length=100, unique=False, blank=True)
     role = models.CharField(max_length=100, choices=ROLES, default=USER)
     email = models.EmailField(blank=False, unique=True)
     is_staff = models.BooleanField(default=False)

@@ -1,6 +1,5 @@
-from django.contrib import admin
-
 from api.models import Article, ArticleUser
+from django.contrib import admin
 
 
 class ArticleAdmin(admin.ModelAdmin):
