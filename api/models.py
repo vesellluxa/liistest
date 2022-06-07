@@ -10,4 +10,4 @@ class Article(models.Model):
                             null=False, blank=False)
     author = models.ForeignKey(to=ArticleUser, on_delete=models.CASCADE)
     pub_date = models.DateTimeField('Publication date', auto_now_add=True)
-    is_private = models.BooleanField(default=False)
+    is_private = models.BooleanField(default=False, db_index=True)
